@@ -1,0 +1,43 @@
+{
+  "name": "Angular RealWorld App",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
+
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/sshd:1": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "24",
+      "pnpmVersion": "latest"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Angular.ng-template",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "vitest.explorer"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+
+  "mounts": [
+    "source=pnpm-store,target=/home/node/.local/share/pnpm/store,type=volume"
+  ],
+
+  "forwardPorts": [4200],
+  "portsAttributes": {
+    "4200": {
+      "label": "Angular Dev Server",
+      "onAutoForward": "openPreview"
+    }
+  },
+
+  "onCreateCommand": "pnpm install",
+  "updateContentCommand": "pnpm run prepare",
+  "remoteUser": "node"
+}
