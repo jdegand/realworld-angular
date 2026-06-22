@@ -4,11 +4,7 @@
 
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/devcontainers/features/sshd:1": {},
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "24",
-      "pnpmVersion": "latest"
-    }
+    "ghcr.io/devcontainers/features/sshd:1": {}
   },
 
   "customizations": {
@@ -26,10 +22,12 @@
   },
 
   "mounts": [
-    "source=pnpm-store,target=/home/node/.local/share/pnpm/store,type=volume"
+    "source=pnpm-store,target=/home/node/.local/share/pnpm/store,type=volume",
+    "source=node-modules,target=/workspaces/${localWorkspaceFolderBasename}/node_modules,type=volume"
   ],
 
   "forwardPorts": [4200],
+  "appPort": ["4200:4200"],
   "portsAttributes": {
     "4200": {
       "label": "Angular Dev Server",
