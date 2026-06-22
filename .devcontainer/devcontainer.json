@@ -37,7 +37,7 @@
 
   "onCreateCommand": "pnpm install",
   "updateContentCommand": "pnpm run prepare",
-  "postCreateCommand": "sudo mkdir -p /home/node/.local/share/pnpm && sudo chown -R node:node /home/node/.local/share/pnpm",
+  "postCreateCommand": "mkdir -p /home/node/.pnpm-global/bin && pnpm config set global-bin-dir /home/node/.pnpm-global/bin && echo 'export PATH=$PATH:/home/node/.pnpm-global/bin' >> /home/node/.bashrc && sudo chown -R node:node /home/node/.pnpm-global",
   "postStartCommand": "pnpm ng serve --host 0.0.0.0 --port 4200",
   "remoteUser": "node"
 }
