@@ -1,9 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-import { Router, provideRouter, PartialMatchRouteSnapshot } from '@angular/router';
+import { Router, provideRouter, PartialMatchRouteSnapshot, UrlTree } from '@angular/router';
 import { describe, it, expect, beforeEach, vi, type Mocked } from 'vitest';
 import { authGuard, guestGuard } from './auth.guard';
 import { Auth } from '../../services/auth';
-import { UrlTree } from '@angular/router';
 
 const authStub: Mocked<Pick<Auth, 'isAuthenticated'>> = {
   isAuthenticated: vi.fn(),
