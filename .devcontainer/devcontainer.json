@@ -1,0 +1,36 @@
+{
+  "name": "Angular RealWorld App",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/sshd:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Angular.ng-template",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "vitest.explorer"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+  "mounts": [
+    "source=pnpm-store,target=/home/node/.local/share/pnpm/store,type=volume",
+    "source=node-modules,target=/workspaces/${localWorkspaceFolderBasename}/node_modules,type=volume"
+  ],
+  "forwardPorts": [4200],
+  "appPort": ["4200:4200"],
+  "portsAttributes": {
+    "4200": {
+      "label": "Angular Dev Server",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "postCreateCommand": "mkdir -p /home/node/.pnpm-global/bin && pnpm config set global-bin-dir /home/node/.pnpm-global/bin && pnpm config set global-dir /home/node/.pnpm-global && pnpm config set store-dir /home/node/.pnpm-store && echo 'export PATH=$PATH:/home/node/.pnpm-global/bin' >> /home/node/.bashrc && sudo chown -R node:node /home/node/.pnpm-global /home/node/.pnpm-store",
+  "postStartCommand": "pnpm ng serve --host 0.0.0.0 --port 4200",
+  "remoteUser": "node"
+}
