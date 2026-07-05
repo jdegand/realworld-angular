@@ -1,10 +1,9 @@
 import { TestBed } from '@angular/core/testing';
-import { Router, provideRouter, PartialMatchRouteSnapshot } from '@angular/router';
+import { Router, provideRouter, PartialMatchRouteSnapshot, UrlTree } from '@angular/router';
 import { signal } from '@angular/core';
 import { describe, it, expect, beforeEach } from 'vitest';
 import { roleGuard } from './role.guard';
 import { Auth } from '../../services/auth';
-import { UrlTree } from '@angular/router';
 import { User } from '../../models/user.model';
 
 const userSignal = signal<User | null>(null);
