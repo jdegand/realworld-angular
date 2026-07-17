@@ -19,7 +19,7 @@ import { PizzeriaApi } from '../../services/pizzeria-api';
 import { EmptyState } from '../../../../shared/components/empty-state/empty-state';
 import { PizzaOrderFormDialog } from '../../../orders/components/pizza-order-form-dialog/pizza-order-form-dialog';
 import { PizzaOrderFormDialogData } from '../../../orders/order.models';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { map, switchMap } from 'rxjs/operators';
 import { merge, of, Subject, timer } from 'rxjs';
 import { form, FormRoot, FormField, debounce } from '@angular/forms/signals';
@@ -27,7 +27,6 @@ import { Dialog } from '@angular/cdk/dialog';
 import { CatalogImageUrlPipe } from '../../../../shared/pipes/catalog-image-url.pipe';
 import { Button } from '../../../../shared/components/button/button';
 import { LoadMore } from '../../../../shared/components/load-more/load-more';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 interface FilterFormModel {
   searchName: string;

@@ -5,9 +5,11 @@ import { CheckoutWizard } from './services/checkout-wizard';
 import { map, Observable } from 'rxjs';
 import { inject } from '@angular/core';
 import { Dialog } from '@angular/cdk/dialog';
-import { ConfirmDialogResult } from '../../shared/components/confirm-dialog/confirm-dialog';
-import { ConfirmDialogData } from '../../shared/components/confirm-dialog/confirm-dialog';
-import { ConfirmDialog } from '../../shared/components/confirm-dialog/confirm-dialog';
+import {
+  ConfirmDialog,
+  ConfirmDialogData,
+  ConfirmDialogResult,
+} from '../../shared/components/confirm-dialog/confirm-dialog';
 
 function checkoutDeactivateGuard(): boolean | Observable<boolean> {
   const wizard = inject(CheckoutWizard);
